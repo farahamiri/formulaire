@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulaire avec JavaScript</title>
+	<script>
+		function valider() {
+			// Récupération des valeurs des champs
+			var nom = document.getElementById("nom").value;
+			var prenom = document.getElementById("prenom").value;
+			var email = document.getElementById("email").value;
+
+			// Vérification que les champs sont remplis
+			if (nom == "" || prenom == "" || email == "") {
+				alert("Veuillez remplir tous les champs.");
+				return false;
+			} else {
+				alert("Formulaire soumis avec succès !");
+				return true;
+			}
+		}
+
+        function isValidEmail(email) {
+  // Vérifier si l'email contient un @
+  if (email.indexOf('@') === -1) {
+    return false;
+  }
+
+  // Vérifier si l'email contient un point après le @
+  var parts = email.split('@');
+  if (parts[1].indexOf('.') === -1) {
+    return false;
+  }
+
+  // Vérifier si l'email se termine par un point
+  if (parts[1].endsWith('.')) {
+    return false;
+  }
+
+  // Si toutes les conditions sont remplies, l'email est valide
+  return true;
+}
+
+// Exemple d'utilisation
+var email = 'john.doe@example.com'; 
+if (isValidEmail(email)) {
+  console.log(email + ' est une adresse e-mail valide.');
+} else {
+  console.log(email + ' n\'est pas une adresse e-mail valide.');
+}
+
+	</script>
+    <body>
+	<h1>Formulaire de contact</h1>
+	<form onsubmit="return valider()">
+		<label for="nom">Nom :</label>
+		<input type="text" id="nom" name="nom"><br>
+
+		<label for="prenom">Prénom :</label>
+		<input type="text" id="prenom" name="prenom"><br>
+
+		<label for="email">Email :</label>
+		<input type="email" id="email" name="email"><br>
+
+		<input type="submit" value="Soumettre">
+	</form>
+</body>
+</html>
